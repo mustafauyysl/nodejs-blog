@@ -18,29 +18,8 @@ app.use(express.static("public"));
 app.engine("handlebars", exphbs());
 app.set("view engine", "handlebars");
 
-app.get("/", (req, res) => {
-  res.render("main/index");
-});
-
-app.get("/about", (req, res) => {
-  res.render("main/about");
-});
-
-app.get("/blog", (req, res) => {
-  res.render("main/blog");
-});
-
-app.get("/contact", (req, res) => {
-  res.render("main/contact");
-});
-
-app.get("/login", (req, res) => {
-  res.render("main/login");
-});
-
-app.get("/register", (req, res) => {
-  res.render("main/register");
-});
+const main = require("./routes/main");
+app.use("/", main);
 
 app.listen(port, () => {
   console.log(`Server listening at http://${hostName}:${port}`);
