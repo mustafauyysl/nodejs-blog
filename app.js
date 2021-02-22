@@ -4,6 +4,12 @@ const app = express();
 const port = 3000;
 const hostName = "127.0.0.1";
 const path = require("path");
+const mongoose = require("mongoose");
+
+mongoose.connect("mongodb://127.0.0.1/nodeblog_db", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 app.use(express.static("public"));
 
