@@ -24,6 +24,18 @@ app.get("/blog", (req, res) => {
   res.render("main/blog");
 });
 
+app.get("/contact", (req, res) => {
+  res.render("main/contact");
+});
+
+app.get("/login", (req, res) => {
+  res.render("main/login");
+});
+
+app.get("/register", (req, res) => {
+  res.render("main/register");
+});
+
 app.listen(port, () => {
   console.log(`Server listening at http://${hostName}:${port}`);
 });
