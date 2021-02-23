@@ -11,6 +11,7 @@ const hostName = "127.0.0.1";
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const fileUpload = require("express-fileupload");
+const generateDate = require("./helpers/generateDate").generateDate;
 
 // MongoDB Connect
 
@@ -33,10 +34,12 @@ app.engine(
   "handlebars",
   expressHandlebars({
     handlebars: allowInsecurePrototypeAccess(Handlebars),
+    helpers: { generateDate },
   }),
   exphbs()
 );
 app.set("view engine", "handlebars");
+
 // Body Parser
 
 app.use(bodyParser.urlencoded({ extended: false }));
