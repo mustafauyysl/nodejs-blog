@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const Post = require("../models/Post");
 
 router.get("/", (req, res) => {
   res.render("main/index");
@@ -10,7 +11,9 @@ router.get("/about", (req, res) => {
 });
 
 router.get("/blog", (req, res) => {
-  res.render("main/blog");
+  Post.find({}).then((posts) => {
+    res.render("main/blog", { posts });
+  });
 });
 
 router.get("/contact", (req, res) => {
