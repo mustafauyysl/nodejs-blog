@@ -18,6 +18,7 @@ const generateDate = require("./helpers/generateDate").generateDate;
 mongoose.connect("mongodb://127.0.0.1/nodeblog_db", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
+  useCreateIndex: true,
 });
 
 // Upload File
@@ -49,8 +50,10 @@ app.use(bodyParser.json());
 
 const main = require("./routes/main");
 const posts = require("./routes/posts");
+const users = require("./routes/users");
 app.use("/", main);
 app.use("/posts", posts);
+app.use("/users", users);
 
 app.listen(port, () => {
   console.log(`Server listening at http://${hostName}:${port}`);
